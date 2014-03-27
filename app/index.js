@@ -26,25 +26,26 @@ var AngularComponentsGenerator = yeoman.generators.Base.extend({
     this.log(chalk.magenta('You\'re using the fantastic AngularComponents generator.'));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'blogName',
+      message: 'What do you want to call your blog?'
     }];
 
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
+      this.blogName = props.blogName;
 
       done();
     }.bind(this));
   },
 
   app: function () {
-    this.mkdir('app');
-    this.mkdir('app/templates');
+    // this.mkdir('src');
 
-    this.copy('_package.json', 'package.json');
-    this.copy('_bower.json', 'bower.json');
+    this.directory('src', 'src');
+    this.directory('misc', 'misc');
+    this.copy('karma.conf.js', 'karma.conf.js');
+    this.copy('Gruntfile.js', 'Gruntfile.js');
+    this.copy('package.json', 'package.json');
+    this.copy('bower.json', 'bower.json');
   },
 
   projectfiles: function () {
