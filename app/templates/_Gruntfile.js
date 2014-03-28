@@ -22,16 +22,16 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     dist: 'dist',
     filename: 'ui-bootstrap',
-    filenamecustom: '<%= filename %>-custom',
+    filenamecustom: '<%%= filename %>-custom',
     meta: {
-      modules: 'angular.module("ui.bootstrap", [<%= srcModules %>]);',
-      tplmodules: 'angular.module("ui.bootstrap.tpls", [<%= tplModules %>]);',
-      all: 'angular.module("ui.bootstrap", ["ui.bootstrap.tpls", <%= srcModules %>]);',
+      modules: 'angular.module("<%= libraryPrefix %>", [<%%= srcModules %>]);',
+      tplmodules: 'angular.module("<%= libraryPrefix %>.tpls", [<%%= tplModules %>]);',
+      all: 'angular.module("<%= libraryPrefix %>", ["<%= libraryPrefix %>.tpls", <%%= srcModules %>]);',
       banner: ['/*',
-               ' * <%= pkg.name %>',
-               ' * <%= pkg.homepage %>\n',
-               ' * Version: <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>',
-               ' * License: <%= pkg.license %>',
+               ' * <%%= pkg.name %>',
+               ' * <%%= pkg.homepage %>\n',
+               ' * Version: <%%= pkg.version %> - <%%= grunt.template.today("yyyy-mm-dd") %>',
+               ' * License: <%%= pkg.license %>',
                ' */\n'].join('\n')
     },
     delta: {
@@ -53,17 +53,17 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         options: {
-          banner: '<%= meta.banner %><%= meta.modules %>\n'
+          banner: '<%%= meta.banner %><%%= meta.modules %>\n'
         },
         src: [], //src filled in by build task
-        dest: '<%= dist %>/<%= filename %>-<%= pkg.version %>.js'
+        dest: '<%%= dist %>/<%%= filename %>-<%%= pkg.version %>.js'
       },
       dist_tpls: {
         options: {
-          banner: '<%= meta.banner %><%= meta.all %>\n<%= meta.tplmodules %>\n'
+          banner: '<%%= meta.banner %><%%= meta.all %>\n<%%= meta.tplmodules %>\n'
         },
         src: [], //src filled in by build task
-        dest: '<%= dist %>/<%= filename %>-tpls-<%= pkg.version %>.js'
+        dest: '<%%= dist %>/<%%= filename %>-tpls-<%%= pkg.version %>.js'
       }
     },
     copy: {
@@ -92,15 +92,15 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= meta.banner %>'
+        banner: '<%%= meta.banner %>'
       },
       dist:{
-        src:['<%= concat.dist.dest %>'],
-        dest:'<%= dist %>/<%= filename %>-<%= pkg.version %>.min.js'
+        src:['<%%= concat.dist.dest %>'],
+        dest:'<%%= dist %>/<%%= filename %>-<%%= pkg.version %>.min.js'
       },
       dist_tpls:{
-        src:['<%= concat.dist_tpls.dest %>'],
-        dest:'<%= dist %>/<%= filename %>-tpls-<%= pkg.version %>.min.js'
+        src:['<%%= concat.dist_tpls.dest %>'],
+        dest:'<%%= dist %>/<%%= filename %>-tpls-<%%= pkg.version %>.min.js'
       }
     },
     html2js: {
@@ -157,7 +157,7 @@ module.exports = function(grunt) {
       }
     },
     shell: {
-      //We use %version% and evluate it at run-time, because <%= pkg.version %>
+      //We use %version% and evluate it at run-time, because <%%= pkg.version %>
       //is only evaluated once
       'release-prepare': [
         'grunt before-test after-test',
@@ -179,7 +179,7 @@ module.exports = function(grunt) {
         dest: 'dist/docs',
         scripts: [
           'angular.js',
-          '<%= concat.dist_tpls.dest %>'
+          '<%%= concat.dist_tpls.dest %>'
         ],
         styles: [
           'docs/css/style.css'
@@ -215,7 +215,7 @@ module.exports = function(grunt) {
     }
   });
 
-  //Common ui.bootstrap module containing all modules for src and templates
+  //Common <%= libraryPrefix %> module containing all modules for src and templates
   //findModule: Adds a given module to config
   var foundModules = {};
   function findModule(name) {
@@ -238,7 +238,7 @@ module.exports = function(grunt) {
 
     var module = {
       name: name,
-      moduleName: enquote('ui.bootstrap.' + name),
+      moduleName: enquote('<%= libraryPrefix %>.' + name),
       displayName: ucwords(breakup(name, ' ')),
       srcFiles: grunt.file.expand('src/'+name+'/*.js'),
       tplFiles: grunt.file.expand('template/'+name+'/*.html'),
@@ -271,8 +271,8 @@ module.exports = function(grunt) {
       var depArrayEnd = contents.indexOf(']', depArrayStart);
       var dependencies = contents.substring(depArrayStart + 1, depArrayEnd);
       dependencies.split(',').forEach(function(dep) {
-        if (dep.indexOf('ui.bootstrap.') > -1) {
-          var depName = dep.trim().replace('ui.bootstrap.','').replace(/['"]/g,'');
+        if (dep.indexOf('<%= libraryPrefix %>.') > -1) {
+          var depName = dep.trim().replace('<%= libraryPrefix %>.','').replace(/['"]/g,'');
           if (deps.indexOf(depName) < 0) {
             deps.push(depName);
             //Get dependencies for this new dependency

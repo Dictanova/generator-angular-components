@@ -26,27 +26,30 @@ var AngularComponentsGenerator = yeoman.generators.Base.extend({
     this.log(chalk.magenta('You\'re using the fantastic AngularComponents generator.'));
 
     var prompts = [{
-      name: 'blogName',
-      message: 'What do you want to call your blog?'
+      name: 'libraryName',
+      message: 'What do you want to call your library?',
+      default: 'My Angular components library'
+    }, {
+      name: 'libraryPrefix',
+      message: 'What prefix do you want for your library?',
+      default: 'ui.mylib'
     }];
 
     this.prompt(prompts, function (props) {
-      this.blogName = props.blogName;
-
+      this.libraryName = props.libraryName;
+      this.libraryPrefix = props.libraryPrefix;
       done();
     }.bind(this));
   },
 
   app: function () {
-    // this.mkdir('src');
-
     this.directory('src', 'src');
     this.directory('template', 'template');
     this.directory('misc', 'misc');
     this.copy('karma.conf.js', 'karma.conf.js');
-    this.copy('Gruntfile.js', 'Gruntfile.js');
-    this.copy('package.json', 'package.json');
-    this.copy('bower.json', 'bower.json');
+    this.template('_Gruntfile.js', 'Gruntfile.js');
+    this.template('_package.json', 'package.json');
+    this.template('_bower.json', 'bower.json');
   },
 
   projectfiles: function () {
