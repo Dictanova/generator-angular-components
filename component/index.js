@@ -9,7 +9,8 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
   },
 
   files: function () {
-    this.directory('_component', 'src/buttons');
+    this.directory('_component_src', 'src/tabs');
+    this.directory('_component_template', 'template/tabs');
 
     // this.copy('somefile.js', 'somefile.js');
   }
