@@ -238,6 +238,7 @@ module.exports = function(grunt) {
 
     var module = {
       name: name,
+      libraryPrefix: '<%= libraryPrefix %>',
       moduleName: enquote('<%= libraryPrefix %>.' + name),
       displayName: ucwords(breakup(name, ' ')),
       srcFiles: grunt.file.expand('src/'+name+'/*.js'),

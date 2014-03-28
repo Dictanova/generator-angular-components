@@ -1,13 +1,13 @@
 
 /**
- * @ngdoc overview
- * @name ui.bootstrap.tabs
+ * 
+ * @name <%= componentModuleName %>
  *
  * @description
- * AngularJS version of the tabs directive.
+ * Describe the <%= componentName %> component here.
  */
 
-angular.module('ui.bootstrap.tabs', [])
+angular.module('<%= componentModuleName %>', [])
 
 .controller('TabsetController', ['$scope', function TabsetCtrl($scope) {
   var ctrl = this,
@@ -49,7 +49,7 @@ angular.module('ui.bootstrap.tabs', [])
 
 /**
  * @ngdoc directive
- * @name ui.bootstrap.tabs.directive:tabset
+ * @name <%= componentModuleName %>.directive:tabset
  * @restrict EA
  *
  * @description
@@ -59,7 +59,7 @@ angular.module('ui.bootstrap.tabs', [])
  * @param {boolean=} justified Whether or not to use justified styling for the tabs.
  *
  * @example
-<example module="ui.bootstrap">
+<example module="<%= libraryName %>">
   <file name="index.html">
     <tabset>
       <tab heading="Tab 1"><b>First</b> Content!</tab>
@@ -86,7 +86,7 @@ angular.module('ui.bootstrap.tabs', [])
       type: '@'
     },
     controller: 'TabsetController',
-    templateUrl: 'template/tabs/tabset.html',
+    templateUrl: '<%= componentTplDir %>/tabset.html',
     link: function(scope, element, attrs) {
       scope.vertical = angular.isDefined(attrs.vertical) ? scope.$parent.$eval(attrs.vertical) : false;
       scope.justified = angular.isDefined(attrs.justified) ? scope.$parent.$eval(attrs.justified) : false;
@@ -96,19 +96,19 @@ angular.module('ui.bootstrap.tabs', [])
 
 /**
  * @ngdoc directive
- * @name ui.bootstrap.tabs.directive:tab
+ * @name <%= componentModuleName %>.directive:tab
  * @restrict EA
  *
- * @param {string=} heading The visible heading, or title, of the tab. Set HTML headings with {@link ui.bootstrap.tabs.directive:tabHeading tabHeading}.
+ * @param {string=} heading The visible heading, or title, of the tab. Set HTML headings with {@link <%= componentModuleName %>.directive:tabHeading tabHeading}.
  * @param {string=} select An expression to evaluate when the tab is selected.
  * @param {boolean=} active A binding, telling whether or not this tab is selected.
  * @param {boolean=} disabled A binding, telling whether or not this tab is disabled.
  *
  * @description
- * Creates a tab with a heading and content. Must be placed within a {@link ui.bootstrap.tabs.directive:tabset tabset}.
+ * Creates a tab with a heading and content. Must be placed within a {@link <%= componentModuleName %>.directive:tabset tabset}.
  *
  * @example
-<example module="ui.bootstrap">
+<example module="<%= libraryName %>">
   <file name="index.html">
     <div ng-controller="TabsDemoCtrl">
       <button class="btn btn-small" ng-click="items[0].active = true">
@@ -152,14 +152,14 @@ angular.module('ui.bootstrap.tabs', [])
 
 /**
  * @ngdoc directive
- * @name ui.bootstrap.tabs.directive:tabHeading
+ * @name <%= componentModuleName %>.directive:tabHeading
  * @restrict EA
  *
  * @description
- * Creates an HTML heading for a {@link ui.bootstrap.tabs.directive:tab tab}. Must be placed as a child of a tab element.
+ * Creates an HTML heading for a {@link <%= componentModuleName %>.directive:tab tab}. Must be placed as a child of a tab element.
  *
  * @example
-<example module="ui.bootstrap">
+<example module="<%= libraryName %>">
   <file name="index.html">
     <tabset>
       <tab>
@@ -179,7 +179,7 @@ angular.module('ui.bootstrap.tabs', [])
     require: '^tabset',
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/tabs/tab.html',
+    templateUrl: '<%= componentTplDir %>/tab.html',
     transclude: true,
     scope: {
       active: '=?',

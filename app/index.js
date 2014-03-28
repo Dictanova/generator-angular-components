@@ -46,6 +46,7 @@ var AngularComponentsGenerator = yeoman.generators.Base.extend({
     this.directory('src', 'src');
     this.directory('template', 'template');
     this.directory('misc', 'misc');
+    this.template('misc/demo/assets/_app.js', 'misc/demo/assets/app.js');
     this.copy('karma.conf.js', 'karma.conf.js');
     this.template('_Gruntfile.js', 'Gruntfile.js');
     this.template('_package.json', 'package.json');

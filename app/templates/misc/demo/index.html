@@ -12,7 +12,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/<%= ngversion %>/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/<%= ngversion %>/angular-touch.min.js"></script>
     <script src="ui-bootstrap-tpls-<%= pkg.version%>.min.js"></script>
-    <script src="assets/plunker.js"></script>
     <script src="assets/app.js"></script>
 
     <link href="http://netdna.bootstrapcdn.com/bootstrap/<%= bsversion %>/css/bootstrap.min.css" rel="stylesheet"/>
@@ -31,12 +30,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs" href="#">UI Bootstrap</a>
+                <a class="navbar-brand visible-xs" href="#"><%= _.humanize(pkg.name) %></a>
             </div>
             <nav class="hidden-xs">
                 <ul class="nav navbar-nav">
                     <a href="#top" role="button" class="navbar-brand">
-                        UI Bootstrap
+                        <%= _.humanize(pkg.name) %>
                     </a>
                     <li class="dropdown">
                         <a role="button" class="dropdown-toggle">
@@ -63,7 +62,7 @@
     <header class="bs-header text-center" id="overview">
         <div class="container">
             <h1>
-                UI Bootstrap
+                <%= _.humanize(pkg.name) %>
             </h1>
         </div>
     </header>
@@ -83,7 +82,7 @@
                     <section id="<%= module.name %>">
                         <div class="page-header">
                           <h1><%= module.displayName %><small>
-                              (<a target="_blank" href="https://github.com/angular-ui/bootstrap/tree/master/src/<%= module.name %>">ui.bootstrap.<%= module.name %></a>)
+                              (<%= module.libraryPrefix %>.<%= module.name %>)
                           </small></h1>
                           </div>
                           <div class="row">
@@ -96,10 +95,7 @@
                         </div>
                         <hr>
                         <div class="row code">
-                            <div class="col-md-12" ng-controller="PlunkerCtrl">
-                                <div class="pull-right">
-                                    <button class="btn btn-info" id="plunk-btn" ng-click="edit('<%= ngversion%>', '<%= bsversion %>', '<%= pkg.version%>', '<%= module.name %>')"><i class="glyphicon glyphicon-edit"></i> Edit in plunker</button>
-                                </div>
+                            <div class="col-md-12">
                                 <tabset>
                                     <tab heading="Markup">
                                         <div plunker-content="markup">
