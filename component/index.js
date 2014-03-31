@@ -17,6 +17,7 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
     this.componentName = this._.humanize(this.name);
     this.componentModuleName = this.libraryName + '.' + this.componentId;
     this.classedName = this._.classify(this.name);
+    this.camelizedName = this._.camelize(this.name);
 
 
   },
@@ -37,7 +38,8 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
     
     //Template directory
     this.mkdir(this.componentTplDir)
-    this.directory('_component_template', this.componentTplDir);
+    this.template('_component_template/_template.html', this.componentTplDir + '/' + this.componentId + '.html')
+    // this.directory('_component_template', this.componentTplDir);
     this.template('_component_src/_component.js', this.componentSrcDir + '/' + this.componentId + '.js')
 
   }

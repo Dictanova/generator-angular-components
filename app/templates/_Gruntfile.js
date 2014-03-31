@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-conventional-changelog');
@@ -103,6 +104,16 @@ module.exports = function(grunt) {
         dest:'<%%= dist %>/<%%= filename %>-tpls-<%%= pkg.version %>.min.js'
       }
     },
+    ngmin: {
+      dist:{
+        src:['<%= concat.dist.dest %>'],
+        dest:'<%= concat.dist.dest %>'
+      },
+      dist_tpls:{
+        src:['<%= concat.dist_tpls.dest %>'],
+        dest:'<%= concat.dist_tpls.dest %>'
+      }
+    },    
     html2js: {
       dist: {
         options: {
@@ -330,7 +341,7 @@ module.exports = function(grunt) {
     grunt.config('concat.dist_tpls.src', grunt.config('concat.dist_tpls.src')
                  .concat(srcFiles).concat(tpljsFiles));
 
-    grunt.task.run(['concat', 'uglify']);
+    grunt.task.run(['concat', 'ngmin', 'uglify']);
   });
 
   grunt.registerTask('test', 'Run tests on singleRun karma server', function () {
