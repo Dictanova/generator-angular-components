@@ -1,10 +1,10 @@
 {
   "name": "generator-angular-components",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.0.1",
+  "description": "Instant scaffolding of your Angular library",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "abanctelchevrel/generator-angular-components",
+  "repository": "Dictanova/generator-angular-components",
   "author": {
     "name": "Antoine BANCTEL-CHEVREL",
     "email": "",
