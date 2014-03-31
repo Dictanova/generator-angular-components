@@ -1,27 +1,8 @@
-# generator-angular-components [![Build Status](https://secure.travis-ci.org/abanctelchevrel/generator-angular-components.png?branch=master)](https://travis-ci.org/abanctelchevrel/generator-angular-components)
+# Angular Components generator
 
-> [Yeoman](http://yeoman.io) generator
-
+> This generator helps you scaffloding a nice Angular components library. It is largely inspired from the awesome [UI Bootstrap](http://angular-ui.github.io/bootstrap/) project.
 
 ## Getting Started
-
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```
-$ npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
 To install generator-angular-components from npm, run:
 
@@ -29,18 +10,83 @@ To install generator-angular-components from npm, run:
 $ npm install -g generator-angular-components
 ```
 
+### Scaffold the project
+
 Finally, initiate the generator:
 
 ```
 $ yo angular-components
+     _-----_
+    |       |
+    |--(o)--|   .--------------------------.
+   `---------´  |    Welcome to Yeoman,    |
+    ( _´U`_ )   |   ladies and gentlemen!  |
+    /___A___\   '__________________________'
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+You're using the fantastic AngularComponents generator.
+[?] What do you want to call your library? Antoine's library
+[?] What prefix do you want for your library? (ui.mylib) ui.ant
+
 ```
 
-### Getting To Know Yeoman
+Build the project : 
+```
+grunt
+....
+cd dist
+python -m SimpleHTTPServer 8004
+```
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+If you look into the dist folder, you should see 5 files and one folder
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+//TODO : change the prefix name of the built library (replace 'ui-bootstrap-' by 'library-name-')  
 
+```
+assets/   //The assets for the documentation
+index.html  //The documentation page
+ui-bootstrap-0.0.0.js // Your library 
+ui-bootstrap-0.0.0.min.js // Your library minified
+ui-bootstrap-tpls-0.0.0.js // Your library withe the templates
+ui-bootstrap-tpls-0.0.0.min.js // Your library with the templates, minified
+
+```
+
+
+Browse on [http://localhost:8004/](http://localhost:8004/), yout should see something like this : 
+![](http://i.imgur.com/6U36M0Xl.png?1)
+
+
+### Create a component
+
+
+It feels a little empty in here, let's create a new component !
+
+```
+yo angular-components:component "my super awesome component"
+
+You called the component subgenerator with the argument my super awesome component.
+   create src/my-super-awesome-component/test/my-super-awesome-component.spec.js
+   create src/my-super-awesome-component/docs/demo.html
+   create src/my-super-awesome-component/docs/demo.js
+   create src/my-super-awesome-component/docs/readme.md
+   create template/my-super-awesome-component/my-super-awesome-component.html
+   create src/my-super-awesome-component/my-super-awesome-component.js
+
+```
+
+Build the project again : 
+```
+grunt
+```
+You should now see this : 
+
+![](http://i.imgur.com/EStUFJSl.png)
+
+That's better!
+You can now implement your component by editing the files in `src/my-super-awesome-component/`.
 
 ## License
 
