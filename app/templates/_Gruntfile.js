@@ -106,14 +106,14 @@ module.exports = function(grunt) {
     },
     ngmin: {
       dist:{
-        src:['<%= concat.dist.dest %>'],
-        dest:'<%= concat.dist.dest %>'
+        src:['<%%= concat.dist.dest %>'],
+        dest:'<%%= concat.dist.dest %>'
       },
       dist_tpls:{
-        src:['<%= concat.dist_tpls.dest %>'],
-        dest:'<%= concat.dist_tpls.dest %>'
+        src:['<%%= concat.dist_tpls.dest %>'],
+        dest:'<%%= concat.dist_tpls.dest %>'
       }
-    },    
+    },
     html2js: {
       dist: {
         options: {

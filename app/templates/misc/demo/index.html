@@ -61,7 +61,7 @@
 <div role="main">
     <header class="bs-header text-center" id="overview">
         <div class="container">
-            <h1>
+            <h1 style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8);">
                 <%= _.humanize(pkg.name) %>
             </h1>
         </div>
@@ -125,8 +125,89 @@
 <script src="assets/rainbow-generic.js"></script>
 <script src="assets/rainbow-javascript.js"></script>
 <script src="assets/rainbow-html.js"></script>
+<script src="assets/patternizer.js"></script>
+
+<canvas id="bgCanvas" width="2000" height="600" style="display: none;">
+</canvas>
+<script>
+
+    //TODO : randomize the pattern with : 
+    // var randomColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    // var colorPalette = tinycolor.analogous(randomColor, results = 6, slices = 30)
+    // var mainTitle = document.getElementById("main-title")
+    // mainTitle.style.color = '#' + tinycolor.complement(randomColor).toHex();
+    // var bgCanvas = document.getElementById('bgCanvas');
+    // var stripes = _.chain(_.range(5))
+    // .map(function(i) {
+    // return {
+    //     color: colorPalette[i].toHex() ,
+    //     rotation: _.random(8)*45,
+    //     opacity: _.random(100),
+    //     mode: 'plaid',
+    //     width: _.random(3, 100),
+    //     gap: _.random(100, 400),
+    //     offset: _.random(20, 100)
+    // }
+    // })
+    // .value();
 
 
+    bgCanvas.patternizer({
+        stripes: [{
+            color: '#092537',
+            rotation: 45,
+            opacity: 50,
+            mode: 'plaid',
+            width: 79,
+            gap: 281,
+            offset: 284
+        }, {
+            color: '#092637',
+            rotation: 45,
+            opacity: 50,
+            mode: 'plaid',
+            width: 9,
+            gap: 351,
+            offset: 149
+        }, {
+            color: '#1b5d84',
+            rotation: 45,
+            opacity: 50,
+            mode: 'plaid',
+            width: 135,
+            gap: 225,
+            offset: 95
+        }, {
+            color: '#1b5d84',
+            rotation: 45,
+            opacity: 50,
+            mode: 'plaid',
+            width: 56,
+            gap: 331,
+            offset: 327
+        }, {
+            color: '#E1F4FD',
+            rotation: 45,
+            opacity: 50,
+            mode: 'plaid',
+            width: 45,
+            gap: 315,
+            offset: 140
+        }, {
+            color: '#E1F4FD',
+            rotation: 45,
+            opacity: 50,
+            mode: 'plaid',
+            width: 36,
+            gap: 324,
+            offset: 320
+        }],
+        bg: '#FFF'
+    });
+    var canvas = document.getElementById("bgCanvas");
+    var header = document.getElementById("overview");
+    header.style.background = "url(" + canvas.toDataURL() + ")";
+</script>
 <script type="text/javascript">
 
     var _gaq = _gaq || [];
