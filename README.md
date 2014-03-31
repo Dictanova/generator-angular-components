@@ -27,8 +27,8 @@ $ yo angular-components
  ´   `  |° ´ Y `
 
 You're using the fantastic AngularComponents generator.
-[?] What do you want to call your library? Antoine's library
-[?] What prefix do you want for your library? (ui.mylib) ui.ant
+[?] What do you want to call your library? My Angular components library
+[?] What prefix do you want for your library? (ui.mylib) 
 
 ```
 
@@ -42,21 +42,19 @@ python -m SimpleHTTPServer 8004
 
 If you look into the dist folder, you should see 5 files and one folder
 
-//TODO : change the prefix name of the built library (replace 'ui-bootstrap-' by 'library-name-')  
-
 ```
 assets/   //The assets for the documentation
 index.html  //The documentation page
-ui-bootstrap-0.0.0.js // Your library 
-ui-bootstrap-0.0.0.min.js // Your library minified
-ui-bootstrap-tpls-0.0.0.js // Your library withe the templates
-ui-bootstrap-tpls-0.0.0.min.js // Your library with the templates, minified
+ui.mylib-0.0.0.js // Your library 
+ui.mylib-0.0.0.min.js // Your library minified
+ui.mylib-tpls-0.0.0.js // Your library withe the templates
+ui.mylib-tpls-0.0.0.min.js // Your library with the templates, minified
 
 ```
 
 
 Browse on [http://localhost:8004/](http://localhost:8004/), yout should see something like this : 
-![](http://i.imgur.com/6U36M0Xl.png?1)
+![](http://i.imgur.com/DA7PU2fl.png)
 
 
 ### Create a component
@@ -83,10 +81,34 @@ grunt
 ```
 You should now see this : 
 
-![](http://i.imgur.com/EStUFJSl.png)
+![](http://i.imgur.com/WcEhlDCl.png)
 
 That's better!
 You can now implement your component by editing the files in `src/my-super-awesome-component/`.
+
+
+### Automatic changelog
+
+Brought to you by [grunt-conventional-changelog](https://github.com/btford/grunt-conventional-changelog)
+
+To activate commit message policy :
+```
+grunt enforce
+```
+
+To generate changelog :
+```
+grunt changelog
+```
+
+
+
+## Tests
+
+To unit test the scaffolder, run :
+```
+npm test
+```
 
 ## License
 

@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Angular directives for Bootstrap</title>
-    <meta name="description" content="AngularJS (Angular) native directives for Bootstrap. Small footprint (5kB gzipped!), no 3rd party JS dependencies (jQuery, bootstrap JS) required! Widgets: <% demoModules.forEach(function(module) { %><%= module.displayName %>, <% }); %>">
+    <meta name="description" content="AngularJS (Angular) native directives for Bootstrap. Small footprint (5kB gzipped!), no 3rd party JS dependencies (jQuery, bootstrap JS) required! Widgets: <%% demoModules.forEach(function(module) { %><%%= module.displayName %>, <%% }); %>">
     <meta name="google-site-verification" content="7lc5HyceLDqpV_6oNHteYFfxDJH7-S3DwnJKtNUKcRg" />
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.7/fastclick.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/<%= ngversion %>/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/<%= ngversion %>/angular-touch.min.js"></script>
-    <script src="ui-bootstrap-tpls-<%= pkg.version%>.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/<%%= ngversion %>/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/<%%= ngversion %>/angular-touch.min.js"></script>
+    <script src="<%= libraryPrefix %>-tpls-<%%= pkg.version%>.min.js"></script>
     <script src="assets/app.js"></script>
 
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/<%= bsversion %>/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/<%%= bsversion %>/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/rainbow.css"/>
     <link rel="stylesheet" href="assets/demo.css"/>
     <link rel="author" href="https://github.com/angular-ui/bootstrap/graphs/contributors">
@@ -30,19 +30,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs" href="#"><%= _.humanize(pkg.name) %></a>
+                <a class="navbar-brand visible-xs" href="#"><%%= _.humanize(pkg.name) %></a>
             </div>
             <nav class="hidden-xs">
                 <ul class="nav navbar-nav">
                     <a href="#top" role="button" class="navbar-brand">
-                        <%= _.humanize(pkg.name) %>
+                        <%%= _.humanize(pkg.name) %>
                     </a>
                     <li class="dropdown">
                         <a role="button" class="dropdown-toggle">
                             Directives <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <% demoModules.forEach(function(module) {  %><li><a href="#<%= module.name %>"><%= module.displayName %></a></li><% }); %>
+                            <%% demoModules.forEach(function(module) {  %><li><a href="#<%%= module.name %>"><%%= module.displayName %></a></li><%% }); %>
                         </ul>
                     </li>
                     <li><a href="#getting_started">Getting started</a></li>
@@ -62,7 +62,7 @@
     <header class="bs-header text-center" id="overview">
         <div class="container">
             <h1 style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8);">
-                <%= _.humanize(pkg.name) %>
+                <%%= _.humanize(pkg.name) %>
             </h1>
         </div>
     </header>
@@ -72,25 +72,25 @@
                 <section class="bs-sidebar visible-xs" id="directives_small">
                     <ul class="nav bs-sidenav">
                         <li><a href="#"><strong>Directives</strong></a></li>
-                        <% demoModules.forEach(function(module) {  %>
-                            <li><a href="#<%= module.name %>"><%= module.displayName %></a></li>
-                        <% }); %>
+                        <%% demoModules.forEach(function(module) {  %>
+                            <li><a href="#<%%= module.name %>"><%%= module.displayName %></a></li>
+                        <%% }); %>
                     </ul>
                 </section>
 
-                <% demoModules.forEach(function(module) { %>
-                    <section id="<%= module.name %>">
+                <%% demoModules.forEach(function(module) { %>
+                    <section id="<%%= module.name %>">
                         <div class="page-header">
-                          <h1><%= module.displayName %><small>
-                              (<%= module.libraryPrefix %>.<%= module.name %>)
+                          <h1><%%= module.displayName %><small>
+                              (<%%= module.libraryPrefix %>.<%%= module.name %>)
                           </small></h1>
                           </div>
                           <div class="row">
                             <div class="col-md-6 show-grid">
-                                <%= module.docs.html %>
+                                <%%= module.docs.html %>
                             </div>
                             <div class="col-md-6">
-                                <%= module.docs.md %>
+                                <%%= module.docs.md %>
                             </div>
                         </div>
                         <hr>
@@ -99,20 +99,20 @@
                                 <tabset>
                                     <tab heading="Markup">
                                         <div plunker-content="markup">
-                                            <pre ng-non-bindable><code data-language="html"><%- module.docs.html %></code></pre>
+                                            <pre ng-non-bindable><code data-language="html"><%%- module.docs.html %></code></pre>
                                         </div>
                                     </tab>
                                     <tab heading="JavaScript">
                                         <div plunker-content="javascript">
-                                            <pre ng-non-bindable><code data-language="javascript"><%- module.docs.js %></code></pre>
+                                            <pre ng-non-bindable><code data-language="javascript"><%%- module.docs.js %></code></pre>
                                         </div>
                                     </tab>
                                 </tabset>
                             </div>
                         </div>
                     </section>
-                    <script><%= module.docs.js %></script>
-                <% }); %>
+                    <script><%%= module.docs.js %></script>
+                <%% }); %>
             </div>
         </div>
     </div><!-- /.container -->

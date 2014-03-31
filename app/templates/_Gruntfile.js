@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     modules: [],//to be filled in by build task
     pkg: grunt.file.readJSON('package.json'),
     dist: 'dist',
-    filename: 'ui-bootstrap',
+    filename: '<%= libraryPrefix %>',
     filenamecustom: '<%%= filename %>-custom',
     meta: {
       modules: 'angular.module("<%= libraryPrefix %>", [<%%= srcModules %>]);',

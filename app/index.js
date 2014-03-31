@@ -46,6 +46,7 @@ var AngularComponentsGenerator = yeoman.generators.Base.extend({
     this.directory('src', 'src');
     this.directory('template', 'template');
     this.directory('misc', 'misc');
+    this.template('misc/demo/_index.html', 'misc/demo/index.html');
     this.template('misc/demo/assets/_app.js', 'misc/demo/assets/app.js');
     this.copy('karma.conf.js', 'karma.conf.js');
     this.template('_Gruntfile.js', 'Gruntfile.js');
@@ -56,6 +57,7 @@ var AngularComponentsGenerator = yeoman.generators.Base.extend({
   projectfiles: function () {
     this.copy('editorconfig', '.editorconfig');
     this.copy('jshintrc', '.jshintrc');
+    this.copy('gitignore', '.gitignore');
   }
 });
 
