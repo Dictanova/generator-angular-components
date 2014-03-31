@@ -8,8 +8,6 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
   init: function() {
     console.log('You called the component subgenerator with the argument ' + this.name + '.');
 
-    // this.cameledName = this._.camelize(this.name);
-
     try {
       this.libraryName = require(path.join(process.cwd(), 'package.json'))._ngPrefix;
     } catch (e) {
@@ -26,12 +24,22 @@ var ComponentGenerator = yeoman.generators.NamedBase.extend({
   files: function() {
     this.componentSrcDir = 'src/' + this.componentId;
     this.componentTplDir = 'template/' + this.componentId;
+    //Src directory
     this.mkdir(this.componentSrcDir)
+    
+    this.mkdir(this.componentSrcDir + '/test')
+    this.template('_component_src/test/_component.spec.js', this.componentSrcDir + '/test/' + this.componentId + '.spec.js')
+    
+    this.mkdir(this.componentSrcDir + '/docs')
+    this.template('_component_src/docs/_demo.html', this.componentSrcDir + '/docs/demo.html')
+    this.template('_component_src/docs/_demo.js', this.componentSrcDir + '/docs/demo.js')
+    this.template('_component_src/docs/_readme.md', this.componentSrcDir + '/docs/readme.md')
+    
+    //Template directory
     this.mkdir(this.componentTplDir)
-    this.directory('_component_src', this.componentSrcDir);
     this.directory('_component_template', this.componentTplDir);
+    this.template('_component_src/_component.js', this.componentSrcDir + '/' + this.componentId + '.js')
 
-    // this.copy('somefile.js', 'somefile.js');
   }
 });
 

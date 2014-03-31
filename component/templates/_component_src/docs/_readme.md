@@ -1,4 +1,5 @@
-AngularJS version of the tabs directive.
+Documentation of the <%= componentName %> module.
+
 
 ### Settings ###
 
