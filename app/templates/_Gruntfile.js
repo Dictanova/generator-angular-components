@@ -283,8 +283,8 @@ module.exports = function(grunt) {
       var depArrayEnd = contents.indexOf(']', depArrayStart);
       var dependencies = contents.substring(depArrayStart + 1, depArrayEnd);
       dependencies.split(',').forEach(function(dep) {
-        if (dep.indexOf('<%= libraryPrefix %>.') > -1) {
-          var depName = dep.trim().replace('<%= libraryPrefix %>.','').replace(/['"]/g,'');
+        if (dep.indexOf('<%= libraryPrefix %>.' + name + '.') > -1) {
+          var depName = dep.trim().replace('<%= libraryPrefix %>.' + name + '.','').replace(/['"]/g,'');
           if (deps.indexOf(depName) < 0) {
             deps.push(depName);
             //Get dependencies for this new dependency
