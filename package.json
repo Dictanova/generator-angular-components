@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-components",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Instant scaffolding of your Angular library",
   "license": "MIT",
   "main": "app/index.js",
@@ -17,7 +17,9 @@
     "test": "mocha"
   },
   "files": [
-    "app"
+    "app",
+    "component",
+    "test"
   ],
   "keywords": [
     "yeoman-generator"
