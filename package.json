@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-components",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Instant scaffolding of your Angular library",
   "license": "MIT",
   "main": "app/index.js",
